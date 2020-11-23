@@ -25,11 +25,11 @@ EOF
 fi
 
 # Build RPM
-make -f fedora/Makefile srpm outdir=/root/rpmbuild/SRPMS
-rpmbuild -rb /root/rpmbuild/SRPMS/jellyfin-*.src.rpm
+make -f fedora/Makefile srpm outdir=$HOME/rpmbuild/SRPMS
+rpmbuild -rb $HOME/rpmbuild/SRPMS/jellyfin-*.src.rpm
 
 # Move the artifacts out
-mv /root/rpmbuild/RPMS/x86_64/jellyfin-*.rpm /root/rpmbuild/SRPMS/jellyfin-*.src.rpm ${ARTIFACT_DIR}/
+mv $HOME/rpmbuild/RPMS/x86_64/jellyfin-*.rpm $HOME/rpmbuild/SRPMS/jellyfin-*.src.rpm ${ARTIFACT_DIR}/
 
 if [[ ${IS_DOCKER} == YES ]]; then
     chown -Rc $(stat -c %u:%g ${ARTIFACT_DIR}) ${ARTIFACT_DIR}
