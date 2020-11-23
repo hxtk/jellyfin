@@ -159,7 +159,7 @@ namespace Jellyfin.Api.Controllers
         [ProducesImageFile]
         public async Task<ActionResult> GetRemoteImage([FromQuery, Required] Uri imageUrl)
         {
-            var urlHash = imageUrl.ToString().GetMD5();
+            var urlHash = imageUrl.ToString().GetSHA1();
             var pointerCachePath = GetFullCachePath(urlHash.ToString());
 
             string? contentPath = null;

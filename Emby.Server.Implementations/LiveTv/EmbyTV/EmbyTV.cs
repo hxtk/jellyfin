@@ -2425,7 +2425,7 @@ namespace Emby.Server.Implementations.LiveTv.EmbyTV
             var timer = new TimerInfo
             {
                 ChannelId = channelId,
-                Id = (seriesTimer.Id + parent.ExternalId).GetMD5().ToString("N", CultureInfo.InvariantCulture),
+                Id = (seriesTimer.Id + parent.ExternalId).GetSHA1().ToString("N", CultureInfo.InvariantCulture),
                 StartDate = parent.StartDate,
                 EndDate = parent.EndDate.Value,
                 ProgramId = parent.ExternalId,

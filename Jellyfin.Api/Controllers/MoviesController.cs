@@ -213,7 +213,7 @@ namespace Jellyfin.Api.Controllers
                     yield return new RecommendationDto
                     {
                         BaselineItemName = name,
-                        CategoryId = name.GetMD5(),
+                        CategoryId = name.GetSHA1(),
                         RecommendationType = type,
                         Items = returnItems
                     };
@@ -253,7 +253,7 @@ namespace Jellyfin.Api.Controllers
                     yield return new RecommendationDto
                     {
                         BaselineItemName = name,
-                        CategoryId = name.GetMD5(),
+                        CategoryId = name.GetSHA1(),
                         RecommendationType = type,
                         Items = returnItems
                     };

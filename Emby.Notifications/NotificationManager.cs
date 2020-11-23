@@ -218,7 +218,7 @@ namespace Emby.Notifications
             return _services.Select(i => new NameIdPair
             {
                 Name = i.Name,
-                Id = i.Name.GetMD5().ToString("N", CultureInfo.InvariantCulture)
+                Id = i.Name.GetSHA1().ToString("N", CultureInfo.InvariantCulture)
             }).OrderBy(i => i.Name);
         }
     }

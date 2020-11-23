@@ -100,11 +100,11 @@ namespace Emby.Server.Implementations.LiveTv.TunerHosts
                     var channel = GetChannelnfo(extInf, tunerHostId, line);
                     if (string.IsNullOrWhiteSpace(channel.Id))
                     {
-                        channel.Id = channelIdPrefix + line.GetMD5().ToString("N", CultureInfo.InvariantCulture);
+                        channel.Id = channelIdPrefix + line.GetSHA1().ToString("N", CultureInfo.InvariantCulture);
                     }
                     else
                     {
-                        channel.Id = channelIdPrefix + channel.Id.GetMD5().ToString("N", CultureInfo.InvariantCulture);
+                        channel.Id = channelIdPrefix + channel.Id.GetSHA1().ToString("N", CultureInfo.InvariantCulture);
                     }
 
                     channel.Path = line;

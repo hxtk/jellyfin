@@ -311,7 +311,7 @@ namespace Emby.Dlna
 
                     profile = ReserializeProfile(tempProfile);
 
-                    profile.Id = path.ToLowerInvariant().GetMD5().ToString("N", CultureInfo.InvariantCulture);
+                    profile.Id = path.ToLowerInvariant().GetSHA1().ToString("N", CultureInfo.InvariantCulture);
 
                     _profiles[path] = new Tuple<InternalProfileInfo, DeviceProfile>(GetInternalProfileInfo(_fileSystem.GetFileInfo(path), type), profile);
 
@@ -363,7 +363,7 @@ namespace Emby.Dlna
 
                 Info = new DeviceProfileInfo
                 {
-                    Id = file.FullName.ToLowerInvariant().GetMD5().ToString("N", CultureInfo.InvariantCulture),
+                    Id = file.FullName.ToLowerInvariant().GetSHA1().ToString("N", CultureInfo.InvariantCulture),
                     Name = _fileSystem.GetFileNameWithoutExtension(file),
                     Type = type
                 }

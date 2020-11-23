@@ -256,7 +256,7 @@ namespace Jellyfin.Api.Controllers
             [FromQuery, Required] string imageUrl,
             [FromQuery, Required] string providerName)
         {
-            var urlHash = imageUrl.GetMD5();
+            var urlHash = imageUrl.GetSHA1();
             var pointerCachePath = GetFullCachePath(urlHash.ToString());
 
             try

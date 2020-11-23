@@ -530,7 +530,7 @@ namespace Emby.Server.Implementations.Library
 
             key = type.FullName + key;
 
-            return key.GetMD5();
+            return key.GetSHA1();
         }
 
         public BaseItem ResolvePath(FileSystemMetadata fileInfo, Folder parent = null)

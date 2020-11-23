@@ -500,7 +500,7 @@ namespace Emby.Server.Implementations.Session
                 Client = appName,
                 DeviceId = deviceId,
                 ApplicationVersion = appVersion,
-                Id = key.GetMD5().ToString("N", CultureInfo.InvariantCulture),
+                Id = key.GetSHA1().ToString("N", CultureInfo.InvariantCulture),
                 ServerId = _appHost.SystemId
             };
 

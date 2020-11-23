@@ -16,8 +16,6 @@ namespace Emby.Server.Implementations.Cryptography
     {
         private static readonly HashSet<string> _supportedHashMethods = new HashSet<string>()
             {
-                "MD5",
-                "System.Security.Cryptography.MD5",
                 "SHA",
                 "SHA1",
                 "System.Security.Cryptography.SHA1",

@@ -262,7 +262,7 @@ namespace MediaBrowser.Controller.Entities
             get
             {
                 var thisType = GetType();
-                return thisType == typeof(Folder) ? Id : thisType.FullName.GetMD5();
+                return thisType == typeof(Folder) ? Id : thisType.FullName.GetSHA1();
             }
         }
 
@@ -1122,7 +1122,7 @@ namespace MediaBrowser.Controller.Entities
 
             if (info.Protocol == MediaProtocol.File)
             {
-                info.ETag = item.DateModified.Ticks.ToString(CultureInfo.InvariantCulture).GetMD5().ToString("N", CultureInfo.InvariantCulture);
+                info.ETag = item.DateModified.Ticks.ToString(CultureInfo.InvariantCulture).GetSHA1().ToString("N", CultureInfo.InvariantCulture);
             }
 
             var video = item as Video;
@@ -2789,7 +2789,7 @@ namespace MediaBrowser.Controller.Entities
         {
             var list = GetEtagValues(user);
 
-            return string.Join("|", list).GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            return string.Join("|", list).GetSHA1().ToString("N", CultureInfo.InvariantCulture);
         }
 
         protected virtual List<string> GetEtagValues(User user)

@@ -714,7 +714,7 @@ namespace MediaBrowser.MediaEncoding.Subtitles
 
                 var date = _fileSystem.GetLastWriteTimeUtc(mediaPath);
 
-                ReadOnlySpan<char> filename = (mediaPath + "_" + subtitleStreamIndex.ToString(CultureInfo.InvariantCulture) + "_" + date.Ticks.ToString(CultureInfo.InvariantCulture) + ticksParam).GetMD5() + outputSubtitleExtension;
+                ReadOnlySpan<char> filename = (mediaPath + "_" + subtitleStreamIndex.ToString(CultureInfo.InvariantCulture) + "_" + date.Ticks.ToString(CultureInfo.InvariantCulture) + ticksParam).GetSHA1() + outputSubtitleExtension;
 
                 var prefix = filename.Slice(0, 1);
 
@@ -722,7 +722,7 @@ namespace MediaBrowser.MediaEncoding.Subtitles
             }
             else
             {
-                ReadOnlySpan<char> filename = (mediaPath + "_" + subtitleStreamIndex.ToString(CultureInfo.InvariantCulture)).GetMD5() + outputSubtitleExtension;
+                ReadOnlySpan<char> filename = (mediaPath + "_" + subtitleStreamIndex.ToString(CultureInfo.InvariantCulture)).GetSHA1() + outputSubtitleExtension;
 
                 var prefix = filename.Slice(0, 1);
 

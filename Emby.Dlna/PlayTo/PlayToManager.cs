@@ -147,7 +147,7 @@ namespace Emby.Dlna.PlayTo
                 usn = usn.Substring(0, index + UuidColonStr.Length);
             }
 
-            return usn.GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            return usn.GetSHA1().ToString("N", CultureInfo.InvariantCulture);
         }
 
         private async Task AddDevice(UpnpDeviceInfo info, string location, CancellationToken cancellationToken)
@@ -162,7 +162,7 @@ namespace Emby.Dlna.PlayTo
             }
             else
             {
-                uuid = location.GetMD5().ToString("N", CultureInfo.InvariantCulture);
+                uuid = location.GetSHA1().ToString("N", CultureInfo.InvariantCulture);
             }
 
             var sessionInfo = _sessionManager.LogSessionActivity("DLNA", _appHost.ApplicationVersionString, uuid, null, uri.OriginalString, null);

@@ -408,14 +408,14 @@ namespace Emby.Server.Implementations.LiveTv
         {
             var name = ServiceName + externalId + InternalVersionNumber;
 
-            return name.ToLowerInvariant().GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            return name.ToLowerInvariant().GetSHA1().ToString("N", CultureInfo.InvariantCulture);
         }
 
         public Guid GetInternalSeriesTimerId(string externalId)
         {
             var name = ServiceName + externalId + InternalVersionNumber;
 
-            return name.ToLowerInvariant().GetMD5();
+            return name.ToLowerInvariant().GetSHA1();
         }
 
         public Guid GetInternalProgramId(string externalId)

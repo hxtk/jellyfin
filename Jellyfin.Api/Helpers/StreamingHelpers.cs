@@ -498,7 +498,7 @@ namespace Jellyfin.Api.Helpers
         {
             var data = $"{state.MediaPath}-{state.UserAgent}-{deviceId!}-{playSessionId!}";
 
-            var filename = data.GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            var filename = data.GetSHA1().ToString("N", CultureInfo.InvariantCulture);
             var ext = outputFileExtension?.ToLowerInvariant();
             var folder = serverConfigurationManager.GetTranscodePath();
 

@@ -105,7 +105,7 @@ namespace MediaBrowser.Providers.MediaInfo
                     && !string.IsNullOrWhiteSpace(item.Album)
                     && !string.IsNullOrWhiteSpace(item.AlbumArtists[0]))
                 {
-                    filename = (item.Album + "-" + item.AlbumArtists[0]).GetMD5().ToString("N", CultureInfo.InvariantCulture);
+                    filename = (item.Album + "-" + item.AlbumArtists[0]).GetSHA1().ToString("N", CultureInfo.InvariantCulture);
                 }
                 else
                 {

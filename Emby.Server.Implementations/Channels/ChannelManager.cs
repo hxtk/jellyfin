@@ -905,10 +905,10 @@ namespace Emby.Server.Implementations.Channels
                 userCacheKey = hasCacheKey.GetCacheKey(userId) ?? string.Empty;
             }
 
-            var filename = string.IsNullOrEmpty(externalFolderId) ? "root" : externalFolderId.GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            var filename = string.IsNullOrEmpty(externalFolderId) ? "root" : externalFolderId.GetSHA1().ToString("N", CultureInfo.InvariantCulture);
             filename += userCacheKey;
 
-            var version = ((channel.DataVersion ?? string.Empty) + "2").GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            var version = ((channel.DataVersion ?? string.Empty) + "2").GetSHA1().ToString("N", CultureInfo.InvariantCulture);
 
             if (sortField.HasValue)
             {
@@ -920,7 +920,7 @@ namespace Emby.Server.Implementations.Channels
                 filename += "-sortDescending";
             }
 
-            filename = filename.GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            filename = filename.GetSHA1().ToString("N", CultureInfo.InvariantCulture);
 
             return Path.Combine(
                 _config.ApplicationPaths.CachePath,

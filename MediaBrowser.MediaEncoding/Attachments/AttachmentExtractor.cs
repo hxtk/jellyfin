@@ -240,11 +240,11 @@ namespace MediaBrowser.MediaEncoding.Attachments
             if (protocol == MediaProtocol.File)
             {
                 var date = _fileSystem.GetLastWriteTimeUtc(mediaPath);
-                filename = (mediaPath + attachmentStreamIndex.ToString(CultureInfo.InvariantCulture) + "_" + date.Ticks.ToString(CultureInfo.InvariantCulture)).GetMD5().ToString("D", CultureInfo.InvariantCulture);
+                filename = (mediaPath + attachmentStreamIndex.ToString(CultureInfo.InvariantCulture) + "_" + date.Ticks.ToString(CultureInfo.InvariantCulture)).GetSHA1().ToString("D", CultureInfo.InvariantCulture);
             }
             else
             {
-                filename = (mediaPath + attachmentStreamIndex.ToString(CultureInfo.InvariantCulture)).GetMD5().ToString("D", CultureInfo.InvariantCulture);
+                filename = (mediaPath + attachmentStreamIndex.ToString(CultureInfo.InvariantCulture)).GetSHA1().ToString("D", CultureInfo.InvariantCulture);
             }
 
             var prefix = filename.Substring(0, 1);

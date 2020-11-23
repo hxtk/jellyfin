@@ -313,7 +313,7 @@ namespace MediaBrowser.Providers.Subtitles
 
         private string GetProviderId(string name)
         {
-            return name.ToLowerInvariant().GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            return name.ToLowerInvariant().GetSHA1().ToString("N", CultureInfo.InvariantCulture);
         }
 
         private ISubtitleProvider GetProvider(string id)

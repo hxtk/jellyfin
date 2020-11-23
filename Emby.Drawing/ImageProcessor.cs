@@ -338,7 +338,7 @@ namespace Emby.Drawing
 
         /// <inheritdoc />
         public string GetImageCacheTag(BaseItem item, ItemImageInfo image)
-            => (item.Path + image.DateModified.Ticks).GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            => (item.Path + image.DateModified.Ticks).GetSHA1().ToString("N", CultureInfo.InvariantCulture);
 
         /// <inheritdoc />
         public string GetImageCacheTag(BaseItem item, ChapterInfo chapter)
@@ -354,7 +354,7 @@ namespace Emby.Drawing
         /// <inheritdoc />
         public string GetImageCacheTag(User user)
         {
-            return (user.ProfileImage.Path + user.ProfileImage.LastModified.Ticks).GetMD5()
+            return (user.ProfileImage.Path + user.ProfileImage.LastModified.Ticks).GetSHA1()
                 .ToString("N", CultureInfo.InvariantCulture);
         }
 
@@ -374,7 +374,7 @@ namespace Emby.Drawing
             {
                 try
                 {
-                    string filename = (originalImagePath + dateModified.Ticks.ToString(CultureInfo.InvariantCulture)).GetMD5().ToString("N", CultureInfo.InvariantCulture);
+                    string filename = (originalImagePath + dateModified.Ticks.ToString(CultureInfo.InvariantCulture)).GetSHA1().ToString("N", CultureInfo.InvariantCulture);
 
                     string cacheExtension = _mediaEncoder.SupportsEncoder("libwebp") ? ".webp" : ".png";
                     var outputPath = Path.Combine(_appPaths.ImageCachePath, "converted-images", filename + cacheExtension);
@@ -432,7 +432,7 @@ namespace Emby.Drawing
                 throw new ArgumentNullException(nameof(fileExtension));
             }
 
-            var filename = uniqueName.GetMD5() + fileExtension;
+            var filename = uniqueName.GetSHA1() + fileExtension;
 
             return GetCachePath(path, filename);
         }

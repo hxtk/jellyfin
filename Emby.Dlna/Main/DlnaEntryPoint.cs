@@ -336,7 +336,7 @@ namespace Emby.Dlna.Main
         {
             if (!Guid.TryParse(text, out var guid))
             {
-                guid = text.GetMD5();
+                guid = text.GetSHA1();
             }
 
             return guid.ToString("N", CultureInfo.InvariantCulture);

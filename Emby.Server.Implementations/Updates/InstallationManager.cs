@@ -406,12 +406,10 @@ namespace Emby.Server.Implementations.Updates
                 .GetAsync(new Uri(package.SourceUrl), cancellationToken).ConfigureAwait(false);
             await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
-            // CA5351: Do Not Use Broken Cryptographic Algorithms
-#pragma warning disable CA5351
-            using var md5 = MD5.Create();
+            using var sha1 = SHA1.Create();
             cancellationToken.ThrowIfCancellationRequested();
 
-            var hash = Hex.Encode(md5.ComputeHash(stream));
+            var hash = Hex.Encode(sha1.ComputeHash(stream));
             if (!string.Equals(package.Checksum, hash, StringComparison.OrdinalIgnoreCase))
             {
                 _logger.LogError(
@@ -439,8 +437,6 @@ namespace Emby.Server.Implementations.Updates
 
             stream.Position = 0;
             _zipClient.ExtractAllFromZip(stream, targetDir, true);
-
-#pragma warning restore CA5351
         }
 
         /// <summary>

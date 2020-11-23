@@ -26,19 +26,16 @@ namespace MediaBrowser.Common.Extensions
         }
 
         /// <summary>
-        /// Gets the Md5.
+        /// Gets the SHA1 Hash.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns><see cref="Guid" />.</returns>
-        public static Guid GetMD5(this string str)
+        public static Guid GetSHA1(this string str)
         {
-#pragma warning disable CA5351
-            using (var provider = MD5.Create())
+            using (var provider = SHA1.Create())
             {
                 return new Guid(provider.ComputeHash(Encoding.Unicode.GetBytes(str)));
             }
-
-#pragma warning restore CA5351
         }
     }
 }

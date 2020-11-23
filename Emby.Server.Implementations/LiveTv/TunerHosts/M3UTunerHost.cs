@@ -58,7 +58,7 @@ namespace Emby.Server.Implementations.LiveTv.TunerHosts
 
         private string GetFullChannelIdPrefix(TunerHostInfo info)
         {
-            return ChannelIdPrefix + info.Url.GetMD5().ToString("N", CultureInfo.InvariantCulture);
+            return ChannelIdPrefix + info.Url.GetSHA1().ToString("N", CultureInfo.InvariantCulture);
         }
 
         protected override async Task<List<ChannelInfo>> GetChannelsInternal(TunerHostInfo info, CancellationToken cancellationToken)
@@ -78,7 +78,7 @@ namespace Emby.Server.Implementations.LiveTv.TunerHosts
                 Name = Name,
                 SourceType = Type,
                 Status = LiveTvTunerStatus.Available,
-                Id = i.Url.GetMD5().ToString("N", CultureInfo.InvariantCulture),
+                Id = i.Url.GetSHA1().ToString("N", CultureInfo.InvariantCulture),
                 Url = i.Url
             })
             .ToList();
@@ -189,7 +189,7 @@ namespace Emby.Server.Implementations.LiveTv.TunerHosts
 
                 ReadAtNativeFramerate = false,
 
-                Id = channel.Path.GetMD5().ToString("N", CultureInfo.InvariantCulture),
+                Id = channel.Path.GetSHA1().ToString("N", CultureInfo.InvariantCulture),
                 IsInfiniteStream = true,
                 IsRemote = isRemote,
 
